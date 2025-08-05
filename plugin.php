@@ -105,6 +105,7 @@ class Plugin {
 		// Its is now safe to include Widgets files
 		require_once( __DIR__ . '/widgets/hello-world.php' );
 		require_once( __DIR__ . '/widgets/inline-editing.php' );
+		require_once( __DIR__ . '/include/solub-core-functions.php');
 		require_once( __DIR__ . '/widgets/hero.php' );
 
 		// Register Widgets
