@@ -107,6 +107,7 @@ class Plugin {
 		require_once( __DIR__ . '/widgets/inline-editing.php' );
 		require_once( __DIR__ . '/include/solub-core-functions.php');
 		require_once( __DIR__ . '/widgets/hero.php' );
+		require_once( __DIR__ . '/widgets/heading.php' );
 
 		// Register Widgets
 		$widgets_manager->register( new Widgets\Hello_World() );
