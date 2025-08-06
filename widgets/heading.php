@@ -201,13 +201,21 @@ class Solub_Heading extends Widget_Base {
          ?>
 
 <div class="tp-about-heading mb-35">
+    <?php if(!empty($settings['sub_title'])):?>
     <span class="tp-section-title-pre"><?php echo esc_html( $settings['sub_title'] )?></span>
+    <?php endif;?>
+
+    <?php if(!empty($settings['title'])):?>
     <h4 class="tp-section-title mb-30"><?php echo solub_core_kses( $settings['title'] )?></h4>
+    <?php endif;?>
+
+    <?php if(!empty($settings['description'])):?>
     <p><?php echo esc_html( $settings['description'] )?></p>
+    <?php endif;?>
 </div>
 
 <?php
-	}
-}
+            }
+        }
 
-$widgets_manager->register( new Solub_Heading() );
+        $widgets_manager->register( new Solub_Heading() );
