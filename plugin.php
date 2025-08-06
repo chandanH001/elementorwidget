@@ -108,6 +108,7 @@ class Plugin {
 		require_once( __DIR__ . '/include/solub-core-functions.php');
 		require_once( __DIR__ . '/widgets/hero.php' );
 		require_once( __DIR__ . '/widgets/heading.php' );
+		require_once( __DIR__ . '/widgets/icon-list.php' );
 
 		// Register Widgets
 		$widgets_manager->register( new Widgets\Hello_World() );
