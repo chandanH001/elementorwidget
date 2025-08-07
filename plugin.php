@@ -111,6 +111,7 @@ class Plugin {
 		require_once( __DIR__ . '/widgets/icon-list.php' );
 		require_once( __DIR__ . '/widgets/button.php' );
 		require_once( __DIR__ . '/widgets/video.php' );
+		require_once( __DIR__ . '/widgets/about-image.php' );
 
 		// Register Widgets
 		$widgets_manager->register( new Widgets\Hello_World() );
