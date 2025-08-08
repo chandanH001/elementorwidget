@@ -105,7 +105,7 @@ class Solub_Heading extends Widget_Base {
 
 	protected function register_heading_controls() {
 		$this->start_controls_section(
-			'hero_title_section',
+			'heading_title_section',
 			[
 				'label' => __( 'Content', 'solub_core' ),
 			]
@@ -116,7 +116,7 @@ class Solub_Heading extends Widget_Base {
 			[
 				'label' => __( 'Sub Title', 'solub_core' ),
 				'type' => Controls_Manager::TEXT,
-                'default' => esc_html( 'Sub Text'),
+                'default' => esc_html( 'Sub Title'),
 				'label_block' => true,
 			]
 		);
@@ -187,6 +187,17 @@ class Solub_Heading extends Widget_Base {
 			]
 		);
 
+		$this->add_control(
+			'sub_title_color',
+			[
+				'label' => esc_html__( 'Sub Title Color', 'solub_core' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .el-sub-title-color' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
 	
 
 		$this->end_controls_section();
@@ -204,21 +215,14 @@ class Solub_Heading extends Widget_Base {
 	 */
 	protected function render() {
 		$settings = $this->get_settings_for_display();
-
-        if ( ! empty( $settings['button_title'] ) ) {	
-			$this->add_link_attributes( 'button_arg', $settings['button_link'] );
-			$this->add_render_attribute('button_arg', 'class', 'tp-btn btn-2 btn-text-flip');
-		}
-
          ?>
 
 <div class="tp-about-heading mb-35 text_aligment ">
     <?php if(!empty($settings['sub_title'])):?>
-    <span class="tp-section-title-pre"><?php echo esc_html( $settings['sub_title'] )?></span>
+    <span class="tp-section-title-pre el-sub-title-color"><?php echo esc_html( $settings['sub_title'] )?></span>
     <?php endif;?>
 
     <?php if(!empty($settings['title'])):?>
-    <span class="tp-section-title-pre"><?php echo esc_html( $settings['sub_title'] )?></span>
     <h4 class="tp-section-title mb-30 "><?php echo solub_core_kses( $settings['title'] )?></h4>
     <?php endif;?>
 
