@@ -145,6 +145,34 @@ class Solub_Heading extends Widget_Base {
 			]
 		);
 
+        $this->add_control(
+			'text_align',
+			[
+				'label' => esc_html__( 'Alignment', 'solub_core' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => esc_html__( 'Left', 'solub_core' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'solub_core' ),
+						'icon' => 'eicon-text-align-center',
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'solub_core' ),
+						'icon' => 'eicon-text-align-right',
+					],
+				],
+				'default' => 'center',
+				'toggle' => true,
+				'selectors' => [
+					'{{WRAPPER}} .text_aligment' => 'text-align: {{VALUE}};',
+				],
+			]
+		);
+
+
 		$this->end_controls_section();
 		
 	}
@@ -159,23 +187,7 @@ class Solub_Heading extends Widget_Base {
 			]
 		);
 
-		$this->add_control(
-			'text_transform',
-			[
-				'label' => __( 'Text Transform', 'solub_core' ),
-				'type' => Controls_Manager::SELECT,
-				'default' => '',
-				'options' => [
-					'' => __( 'None', 'solub_core' ),
-					'uppercase' => __( 'UPPERCASE', 'solub_core' ),
-					'lowercase' => __( 'lowercase', 'solub_core' ),
-					'capitalize' => __( 'Capitalize', 'solub_core' ),
-				],
-				'selectors' => [
-					'{{WRAPPER}} .title' => 'text-transform: {{VALUE}};',
-				],
-			]
-		);
+	
 
 		$this->end_controls_section();
 	}
@@ -200,13 +212,14 @@ class Solub_Heading extends Widget_Base {
 
          ?>
 
-<div class="tp-about-heading mb-35">
+<div class="tp-about-heading mb-35 text_aligment ">
     <?php if(!empty($settings['sub_title'])):?>
     <span class="tp-section-title-pre"><?php echo esc_html( $settings['sub_title'] )?></span>
     <?php endif;?>
 
     <?php if(!empty($settings['title'])):?>
-    <h4 class="tp-section-title mb-30"><?php echo solub_core_kses( $settings['title'] )?></h4>
+    <span class="tp-section-title-pre"><?php echo esc_html( $settings['sub_title'] )?></span>
+    <h4 class="tp-section-title mb-30 "><?php echo solub_core_kses( $settings['title'] )?></h4>
     <?php endif;?>
 
     <?php if(!empty($settings['description'])):?>
