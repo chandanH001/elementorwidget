@@ -197,6 +197,26 @@ class Solub_Heading extends Widget_Base {
 				],
 			]
 		);
+		$this->add_control(
+			'title_color',
+			[
+				'label' => esc_html__( 'Title Color', 'solub_core' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .el-title-color' => 'color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_control(
+			'content_color',
+			[
+				'label' => esc_html__( 'Content Color', 'solub_core' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .el-content-color' => 'color: {{VALUE}}',
+				],
+			]
+		);
 
 	
 
@@ -223,11 +243,11 @@ class Solub_Heading extends Widget_Base {
     <?php endif;?>
 
     <?php if(!empty($settings['title'])):?>
-    <h4 class="tp-section-title mb-30 "><?php echo solub_core_kses( $settings['title'] )?></h4>
+    <h4 class="tp-section-title mb-30 el-title-color"><?php echo solub_core_kses( $settings['title'] )?></h4>
     <?php endif;?>
 
     <?php if(!empty($settings['description'])):?>
-    <p><?php echo esc_html( $settings['description'] )?></p>
+    <p class="el-content-color"><?php echo esc_html( $settings['description'] )?></p>
     <?php endif;?>
 </div>
 
