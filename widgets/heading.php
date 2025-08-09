@@ -180,10 +180,20 @@ class Solub_Heading extends Widget_Base {
 		
         protected function register_heading_style_controls() {
 		$this->start_controls_section(
-			'section_style',
+			'subtitle_style',
 			[
-				'label' => __( 'Style', 'solub_core' ),
+				'label' => __( 'Sub Title', 'solub_core' ),
 				'tab' => Controls_Manager::TAB_STYLE,
+			]
+		);
+
+
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'label' => esc_html__( 'Sub Title Typography', 'solub_core' ),
+				'name' => 'sub_title_typography',
+				'selector' => '{{WRAPPER}} .el-sub-title-color',
 			]
 		);
 
@@ -197,6 +207,26 @@ class Solub_Heading extends Widget_Base {
 				],
 			]
 		);
+        $this->end_controls_section();
+
+		
+		$this->start_controls_section(
+			'title_style',
+			[
+				'label' => __( 'Sub Title', 'solub_core' ),
+				'tab' => Controls_Manager::TAB_STYLE,
+			]
+		);
+ 
+        $this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'label' => esc_html__( 'Title Typography', 'solub_core' ),
+				'name' => 'title_typography',
+				'selector' => '{{WRAPPER}} .el-title-color',
+			]
+		);
+
 		$this->add_control(
 			'title_color',
 			[
@@ -207,6 +237,25 @@ class Solub_Heading extends Widget_Base {
 				],
 			]
 		);
+		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'content_style',
+			[
+				'label' => __( 'Content', 'solub_core' ),
+				'tab' => Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'label' => esc_html__( 'Content Typography', 'solub_core' ),
+				'name' => 'content_typography',
+				'selector' => '{{WRAPPER}} .el-content-color',
+			]
+		);
+
 		$this->add_control(
 			'content_color',
 			[
