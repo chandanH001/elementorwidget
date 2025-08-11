@@ -127,6 +127,18 @@ class Solub_Icon_list extends Widget_Base {
 			]
 		);
 
+		$repeater->add_control(
+			'list_color',
+			[
+				'label' => esc_html__( 'Color', 'solub_core' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} {{CURRENT_ITEM}} .list-icon-bg' => 'background-color: {{VALUE}}'
+				],
+			]
+		);
+
+
         
         $this->add_control(
 			'list',
@@ -204,7 +216,8 @@ class Solub_Icon_list extends Widget_Base {
 <div class="tp-about-list">
     <ul>
         <?php foreach($settings['list'] as $item ) :?>
-        <li><span><svg xmlns="http://www.w3.org/2000/svg" width="11" height="9" viewBox="0 0 11 9" fill="none">
+        <li class="elementor-repeater-item-<?php echo esc_attr($item['_id'])?>"><span class="list-icon-bg"><svg
+                    xmlns="http://www.w3.org/2000/svg" width="11" height="9" viewBox="0 0 11 9" fill="none">
                     <path d="M9.5451 1.27344L3.9201 7.04884L1.36328 4.42366" stroke="white" stroke-width="2"
                         stroke-linecap="round" stroke-linejoin="round" />
                 </svg></span><?php echo esc_html( $item['list_title'] )?></li>
