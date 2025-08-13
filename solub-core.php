@@ -170,5 +170,24 @@ final class Solub_Core {
 	}
 }
 
+
+
+// Allow and clean SVG uploads
+add_filter( 'upload_mimes', function( $mimes ) {
+    $mimes['svg'] = 'image/svg+xml';
+    return $mimes;
+});
+
+add_filter( 'wp_handle_upload_prefilter', function( $file ) {
+    if ( isset( $file['type'] ) && $file['type'] === 'image/svg+xml' ) {
+        $svg_content = file_get_contents( $file['tmp_name'] );
+        if ( $svg_content ) {
+            $svg_content = preg_replace( '/\sfill="[^"]*"/i', '', $svg_content );
+            file_put_contents( $file['tmp_name'], $svg_content );
+        }
+    }
+    return $file;
+});
+
 // Instantiate Solub_Core.
 new Solub_Core();
