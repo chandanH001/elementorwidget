@@ -106,9 +106,90 @@ class Solub_Service_list extends Widget_Base {
 	protected function register_service_list_controls() {
 
     $this->start_controls_section(
+			'heading_title_section',
+			[
+				'label' => __( 'Content', 'solub_core' ),
+			]
+		);
+
+		$this->add_control(
+			'sub_title',
+			[
+				'label' => __( 'Sub Title', 'solub_core' ),
+				'type' => Controls_Manager::TEXT,
+                'default' => esc_html( 'Sub Title'),
+				'label_block' => true,
+			]
+		);
+
+		$this->add_control(
+			'title',
+			[
+				'label' => __( 'Title', 'solub_core' ),
+				'type' => Controls_Manager::TEXT,
+                'default' => esc_html('Title'),
+				'label_block' => true,
+
+			]
+		);
+
+        $this->add_control(
+			'description',
+			[
+				'label' => esc_html__( 'Description', 'solub_core' ),
+				'type' => \Elementor\Controls_Manager::TEXTAREA,
+				'rows' => 10,
+				'default' => esc_html__( 'Default description', 'solub_core' ),
+				'placeholder' => esc_html__( 'Type your description here', 'solub_core' ),
+				'label_block' => true,
+
+			]
+		);
+
+	$this->end_controls_section();
+		
+	$this->start_controls_section(
+			'hero_button_section',
+			[
+				'label' => __( 'Button Info', 'solub_core' ),
+			]
+		);
+
+
+		$this->add_control(
+			'button_title',
+			[
+				'label' => __( 'Button Title', 'solub_core' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => __( 'Button Title', 'solub-core' ),
+				'label_block' => true,
+
+			]
+		);
+
+		$this->add_control(
+			'button_link',
+			[
+				'label' => esc_html__( 'Button Link', 'solub_core' ),
+				'type' => \Elementor\Controls_Manager::URL,
+				'options' => [ 'url', 'is_external', 'nofollow' ],
+				'default' => [
+					'url' => '#',
+					'is_external' => false,
+					'nofollow' => true,
+					'custom_attributes' => '',
+				],
+				'label_block' => true,
+			]
+		);
+
+		$this->end_controls_section();
+
+
+    $this->start_controls_section(
                 'icon_list_widget',
                 [
-                    'label' => __( 'Content', 'solub_core' ),
+                    'label' => __( 'Service List Info', 'solub_core' ),
                     
                 ]
             );
@@ -281,6 +362,11 @@ class Solub_Service_list extends Widget_Base {
 	 */
 	protected function render() {
 		$settings = $this->get_settings_for_display();
+ 
+        if ( ! empty( $settings['button_title'] ) ) {	
+			$this->add_link_attributes( 'button_arg', $settings['button_link'] );
+			$this->add_render_attribute('button_arg', 'class', 'tp-btn btn-text-flip');
+		}
 
          ?>
 
@@ -293,17 +379,19 @@ class Solub_Service_list extends Widget_Base {
             <div class="col-lg-5">
                 <div class="tp-service-box wow fadeInLeft" data-wow-duration=".9s" data-wow-delay=".3s">
                     <div class="tp-service-heading mb-50">
-                        <span class="tp-section-title-pre">CHECK OUR SERVICES</span>
-                        <h4 class="tp-section-title mb-30">Our solar have <br>
-                            quality service!</h4>
-                        <p>Since 1985 Reed has pioneered specialist recruitment, <br> sourcing knowledgeable, skilled
-                            profess
+                        <span class="tp-section-title-pre"><?php echo esc_html( $settings['sub_title'] )?></span>
+                        <h4 class="tp-section-title mb-30"><?php echo solub_core_kses( $settings['title'] )?></h4>
+                        <p><?php echo esc_html( $settings['description'] )?>
                         </p>
                     </div>
+
+                    <?php if (!empty($settings['button_title'])) : ?>
                     <div class="tp-service-btn">
-                        <a class="tp-btn btn-text-flip" href="service.html"><span data-text="See all Services">See all
-                                Services</span></a>
+                        <a <?php echo $this->get_render_attribute_string('button_arg'); ?>><span
+                                data-text="<?php echo esc_attr( $settings['button_title'] )?>"><?php echo esc_attr( $settings['button_title'] )?></span></a>
                     </div>
+                    <?php endif;?>
+
                 </div>
             </div>
             <div class="col-lg-7">
