@@ -120,13 +120,13 @@ class Solub_Service_list extends Widget_Base {
 		$repeater->add_control(
 			'icon-style',
 			[
-				'label' => esc_html__( 'Select Icon', 'textdomain' ),
+				'label' => esc_html__( 'Select Icon', 'solub_core' ),
 				'type' => \Elementor\Controls_Manager::SELECT,
 				'default' => 'icon',
 				'options' => [
-					'icon' => esc_html__( 'Icon', 'textdomain' ),
-					'image' => esc_html__( 'Image', 'textdomain' ),
-					'svg' => esc_html__( 'SVG', 'textdomain' ),
+					'icon' => esc_html__( 'Icon', 'solub_core' ),
+					'image' => esc_html__( 'Image', 'solub_core' ),
+					'svg' => esc_html__( 'SVG', 'solub_core' ),
 				],
 			]
 		);
@@ -134,7 +134,7 @@ class Solub_Service_list extends Widget_Base {
 		$repeater->add_control(
 			'icon',
 			[
-				'label' => esc_html__( 'Icon', 'textdomain' ),
+				'label' => esc_html__( 'Icon', 'solub_core' ),
 				'type' => \Elementor\Controls_Manager::ICONS,
 				'default' => [
 					'value' => 'fas fa-smile',
@@ -149,7 +149,7 @@ class Solub_Service_list extends Widget_Base {
 		$repeater->add_control(
 			'image',
 			[
-				'label' => esc_html__( 'Image Icon', 'textdomain' ),
+				'label' => esc_html__( 'Image Icon', 'solub_core' ),
 				'type' => \Elementor\Controls_Manager::MEDIA,
 				'default' => [
 					'url' => \Elementor\Utils::get_placeholder_image_src(),
@@ -163,7 +163,7 @@ class Solub_Service_list extends Widget_Base {
 		$repeater->add_control(
 			'svg',
 			[
-				'label' => esc_html__( 'SGV', 'textdomain' ),
+				'label' => esc_html__( 'SGV', 'solub_core' ),
 				'type' => \Elementor\Controls_Manager::TEXTAREA,
 				'label_block' => true,
 				'condition' => [
@@ -208,7 +208,7 @@ class Solub_Service_list extends Widget_Base {
         $this->add_control(
 			'list',
 			[
-				'label' => esc_html__( 'Repeater List', 'solub_core' ),
+				'label' => esc_html__( 'Service List', 'solub_core' ),
 				'type' => \Elementor\Controls_Manager::REPEATER,
 				'fields' => $repeater->get_controls(),
 				'default' => [
