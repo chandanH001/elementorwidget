@@ -114,6 +114,7 @@ class Plugin {
 		require_once( __DIR__ . '/widgets/about-image.php' );
 		require_once( __DIR__ . '/widgets/fact-list.php' );
 		require_once( __DIR__ . '/widgets/solub-service.php' );
+		require_once( __DIR__ . '/widgets/solub-image.php' );
 
 		// Register Widgets
 		$widgets_manager->register( new Widgets\Hello_World() );
