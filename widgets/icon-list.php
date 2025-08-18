@@ -105,6 +105,30 @@ class Solub_Icon_list extends Widget_Base {
 
 	protected function register_icon_list_controls() {
 
+
+
+	$this->start_controls_section(
+		'section_layout',
+		[
+			'label' => __( 'Layout', 'solub_core' ),
+		]
+	);
+
+	$this->add_control(
+		'icon_list_layout',
+		[
+			'label' => __( 'Select Icon Layout', 'solub_core' ),
+			'type' => Controls_Manager::SELECT,
+			'default' => 'layout1',
+			'options' => [
+				'layout1' => __( 'Layout 1 (Simple Icon', 'solub_core' ),
+				'layout2' => __( 'Layout 2 (2ND Icon Layout)', 'solub_core' ),
+			],
+		]
+	);
+
+	$this->end_controls_section();
+
     $this->start_controls_section(
                 'icon_list_widget',
                 [
@@ -213,6 +237,24 @@ class Solub_Icon_list extends Widget_Base {
 
          ?>
 
+
+
+<?php if($settings['icon_list_layout']=='layout2') : ?>
+
+<div class="tp-chose-list">
+    <ul>
+        <?php foreach($settings['list'] as $item ) :?>
+        <li class="elementor-repeater-item-<?php echo esc_attr($item['_id'])?>"><span><svg xmlns="
+            http://www.w3.org/2000/svg" width="26" height="19" viewBox="0 0 26 19" fill="none">
+                    <path d="M25 1L8.5 17.5L1 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg></span><?php echo esc_html( $item['list_title'] )?>
+        </li>
+        <?php endforeach;?>
+    </ul>
+</div>
+
+<?php else : ?>
 <div class="tp-about-list">
     <ul>
         <?php foreach($settings['list'] as $item ) :?>
@@ -224,6 +266,8 @@ class Solub_Icon_list extends Widget_Base {
         <?php endforeach;?>
     </ul>
 </div>
+
+<?php endif;?>
 
 <?php
             }
