@@ -116,6 +116,7 @@ class Plugin {
 		require_once( __DIR__ . '/widgets/solub-service.php' );
 		require_once( __DIR__ . '/widgets/solub-image.php' );
 		require_once( __DIR__ . '/widgets/project-list.php' );
+		require_once( __DIR__ . '/widgets/accordion.php' );
 
 		// Register Widgets
 		$widgets_manager->register( new Widgets\Hello_World() );
