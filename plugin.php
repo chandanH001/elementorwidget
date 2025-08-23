@@ -117,7 +117,9 @@ class Plugin {
 		require_once( __DIR__ . '/widgets/solub-image.php' );
 		require_once( __DIR__ . '/widgets/project-list.php' );
 		require_once( __DIR__ . '/widgets/accordion.php' );
-
+		require_once( __DIR__ . '/widgets/video-section.php' );
+		require_once( __DIR__ . '/widgets/testimonial.php' );
+		
 		// Register Widgets
 		$widgets_manager->register( new Widgets\Hello_World() );
 		$widgets_manager->register( new Widgets\Inline_Editing() );
