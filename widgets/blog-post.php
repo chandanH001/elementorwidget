@@ -233,13 +233,20 @@ class Solub_Blog extends Widget_Base {
     <div class="container">
         <div class="row">
 
-            <?php if ($query-> have_posts()): while ($query-> have_posts()): $query-> the_post(); ?>
+            <?php if ($query-> have_posts()): while ($query-> have_posts()): $query-> the_post(); 
+			$categories = get_the_category();
+			// var_dump($categories);
+			
+			?>
             <div class="col-lg-4 col-md-6">
                 <div class="tp-blog-item mb-30 wow fadeInUp" data-wow-duration=".9s" data-wow-delay=".3s">
                     <div class="tp-blog-item-content mb-30">
                         <div class="tp-blog-item-tags">
-                            <a href="#">Energy</a>
-                            <a href="#">solar</a>
+                            <?php foreach($categories as $key => $cat):?>
+                            <a
+                                href="<?php echo esc_url(get_term_link($cat->term_id))?>"><?php echo esc_html( $cat ->name)?></a>
+                            <?php if($key==1) break;?>
+                            <?php endforeach;?>
                         </div>
                         <h4 class="tp-blog-item-title"><a class="textline"
                                 href="<?php the_permalink();?>"><?php the_title();?></a></h4>
@@ -247,7 +254,7 @@ class Solub_Blog extends Widget_Base {
                     <div class="tp-blog-item-thumb p-relative">
                         <?php the_post_thumbnail()?>
                         <div class="tp-blog-item-btn">
-                            <a href="<?php the_permalink();?>"><?php echo esc_html($settings['button_title'])?>
+                            <a href="<?php the_permalink();?>"><?php echo esc_html('Details','solub_core')?>
                                 <span><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"
                                         fill="none">
                                         <path d="M1 9L9 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"
