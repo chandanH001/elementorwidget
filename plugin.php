@@ -120,6 +120,7 @@ class Plugin {
 		require_once( __DIR__ . '/widgets/video-section.php' );
 		require_once( __DIR__ . '/widgets/testimonial.php' );
 		require_once( __DIR__ . '/widgets/team.php' );
+		require_once( __DIR__ . '/widgets/blog-post.php' );
 		
 		// Register Widgets
 		$widgets_manager->register( new Widgets\Hello_World() );
