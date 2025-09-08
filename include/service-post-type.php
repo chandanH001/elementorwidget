@@ -1,5 +1,16 @@
 <?php
 
+
+	function service_page_template( $template ) {
+		if ( is_singular( 'service' )  ) {
+			$new_template = __DIR__.'/services-single.php';
+		if ( '' != $new_template ) {
+			return $new_template ;
+		}
+		}
+		return $template;
+	}
+	add_filter( 'template_include', 'service_page_template', 99 );
 /**
  * Register a custom post type called "Service".
  *
